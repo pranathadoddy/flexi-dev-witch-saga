@@ -5,10 +5,7 @@ This project is an ASP.NET Core web application that calculates the average numb
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-- [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Testing](#testing)
-- [License](#license)
+
 
 ## Prerequisites
 - [.NET SDK](https://dotnet.microsoft.com/download) (version 5.0 or later)
