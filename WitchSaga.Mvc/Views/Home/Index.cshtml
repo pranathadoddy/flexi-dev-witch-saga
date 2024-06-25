@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form id="witchForm">
+    <label for="ageA">Age of Death A:</label>
+    <input type="number" id="ageA" name="ageA"><br><br>
+    <label for="deathYearA">Year of Death A:</label>
+    <input type="number" id="deathYearA" name="deathYearA"><br><br>
+    <label for="ageB">Age of Death B:</label>
+    <input type="number" id="ageB" name="ageB"><br><br>
+    <label for="deathYearB">Year of Death B:</label>
+    <input type="number" id="deathYearB" name="deathYearB"><br><br>
+    <input type="button" value="Calculate" onclick="calculateAverage()">
+</form>
+<p id="result"></p>
+
+<script>
+    async function calculateAverage() {
+        const ageA = document.getElementById('ageA').value;
+        const deathYearA = document.getElementById('deathYearA').value;
+        const ageB = document.getElementById('ageB').value;
+        const deathYearB = document.getElementById('deathYearB').value;
+
+        const response = await fetch(`/Home/GetAverageKills`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                AgeOfDeathA: ageA,
+                DeathYearA: deathYearA,
+                AgeOfDeathB: ageB,
+                DeathYearB: deathYearB
+            })
+        });
+
+        const result = await response.text();
+
+        document.getElementById('result').innerText = response.ok ? `Average Kills: ${result}` : `Error: ${result}`;
+    }
+</script>
